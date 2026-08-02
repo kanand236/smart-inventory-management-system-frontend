@@ -163,11 +163,29 @@ function Products() {
         <Layout>
             <div>
 
-                <h1>Product Management</h1>
+                <div className="mb-8">
 
-                <h3>Total Products: {products.length}</h3>
+                    <h1 className="text-3xl font-bold text-gray-800">
+                        Product Management
+                    </h1>
 
-                <h3>Total Categories: {categories.length}</h3>
+                    <p className="text-gray-500 mt-2">
+                        Manage products, categories and inventory.
+                    </p>
+
+                    <div className="flex flex-wrap gap-4 mt-5">
+
+                        <div className="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-semibold">
+                            Total Products : {products.length}
+                        </div>
+
+                        <div className="bg-green-100 text-green-700 px-4 py-2 rounded-lg font-semibold">
+                            Total Categories : {categories.length}
+                        </div>
+
+                    </div>
+
+                </div>
 
                 <div className="bg-white p-6 rounded-lg shadow mb-8">
 
@@ -179,7 +197,7 @@ function Products() {
 
                     <form onSubmit={handleSubmit}>
 
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                             <input
                                 type="text"
@@ -187,20 +205,38 @@ function Products() {
                                 placeholder="Product Name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="border p-2 rounded w-full"
+                                className="
+w-full
+border
+border-gray-300
+rounded-lg
+p-3
+focus:outline-none
+focus:ring-2
+focus:ring-blue-500
+"
                             />
 
-                            <br /><br />
+
                             <input
                                 type="text"
                                 name="sku"
                                 placeholder="SKU"
                                 value={formData.sku}
                                 onChange={handleChange}
-                                className="border p-2 rounded w-full"
+                                className="
+w-full
+border
+border-gray-300
+rounded-lg
+p-3
+focus:outline-none
+focus:ring-2
+focus:ring-blue-500
+"
                             />
 
-                            <br /><br />
+
 
                             <input
                                 type="number"
@@ -208,10 +244,19 @@ function Products() {
                                 placeholder="Price"
                                 value={formData.price}
                                 onChange={handleChange}
-                                className="border p-2 rounded w-full"
+                                className="
+w-full
+border
+border-gray-300
+rounded-lg
+p-3
+focus:outline-none
+focus:ring-2
+focus:ring-blue-500
+"
                             />
 
-                            <br /><br />
+
 
                             <input
                                 type="number"
@@ -219,10 +264,19 @@ function Products() {
                                 placeholder="Quantity"
                                 value={formData.quantity}
                                 onChange={handleChange}
-                                className="border p-2 rounded w-full"
+                                className="
+w-full
+border
+border-gray-300
+rounded-lg
+p-3
+focus:outline-none
+focus:ring-2
+focus:ring-blue-500
+"
                             />
 
-                            <br /><br />
+
 
                             <input
                                 type="number"
@@ -230,7 +284,16 @@ function Products() {
                                 placeholder="Minimum Stock"
                                 value={formData.minimumStock}
                                 onChange={handleChange}
-                                className="border p-2 rounded w-full"
+                                className="
+w-full
+border
+border-gray-300
+rounded-lg
+p-3
+focus:outline-none
+focus:ring-2
+focus:ring-blue-500
+"
                             />
 
 
@@ -238,13 +301,22 @@ function Products() {
                         </div>
 
 
-                        <br /><br />
+
 
                         <select
                             name="categoryId"
                             value={formData.categoryId}
                             onChange={handleChange}
-                            className="border p-2 rounded w-full"
+                            className="
+w-full
+border
+border-gray-300
+rounded-lg
+p-3
+focus:outline-none
+focus:ring-2
+focus:ring-blue-500
+"
                         >
 
                             <option value="">
@@ -266,11 +338,23 @@ function Products() {
 
                         </select>
 
-                        <br /><br />
+
 
                         <button
                             type="submit"
-                            className="bg-blue-600 text-white px-4 py-2 rounded mt-4"
+                            className="
+mt-5
+w-full
+sm:w-auto
+bg-blue-600
+hover:bg-blue-700
+text-white
+px-6
+py-3
+rounded-lg
+transition
+cursor-pointer
+"
                         >
                             Add Product
                         </button>
@@ -283,7 +367,7 @@ function Products() {
 
                 <hr />
 
-                <div className="bg-white p-6 rounded-lg shadow">
+                <div className="bg-white rounded-xl shadow-md p-6 mt-8">
 
                     <h2 className="text-2xl font-bold mb-4">
                         Product List
@@ -291,83 +375,160 @@ function Products() {
 
                 </div>
 
-                <table className="w-full border">
+                <div className="overflow-x-auto">
 
-                    <thead>
+                    <table className="min-w-full border border-gray-300 rounded-lg">
 
-                        <tr className="bg-gray-200">
+                        <thead>
 
-                            <th>Name</th>
-                            <th>SKU</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Category</th>
-                            <th>Action</th>
+                            <tr className="bg-gray-100 text-left">
 
-                        </tr>
+                                <th className="px-4 py-3">Name</th>
+                                <th className="px-4 py-3">SKU</th>
+                                <th className="px-4 py-3">Price</th>
+                                <th className="px-4 py-3">Quantity</th>
+                                <th className="px-4 py-3">Category</th>
+                                <th className="px-4 py-3">Action</th>
 
-                    </thead>
+                            </tr>
 
-                    <tbody>
+                        </thead>
 
-                        {
-                            products.map(product => (
+                        <tbody>
 
-                                <tr key={product.id}>
+                            {
+                                products.map(product => (
 
-                                    <td>{product.name}</td>
+                                    <tr key={product.id}>
 
-                                    <td>{product.sku}</td>
+                                        <td className="px-4 py-3 border-t">{product.name}</td>
 
-                                    <td>{product.price}</td>
+                                        <td className="px-4 py-3 border-t">{product.sku}</td>
 
-                                    <td>{product.quantity}</td>
+                                        <td className="px-4 py-3 border-t">{product.price}</td>
 
-                                    <td>{product.categoryName}</td>
+                                        <td className="px-4 py-3 border-t">{product.quantity}</td>
 
-                                    <td>
+                                        <td className="px-4 py-3 border-t">{product.categoryName}</td>
 
-                                        <button
-                                            onClick={() =>
-                                                handleDelete(product.id)
-                                            }
-                                            className="bg-red-500 text-white px-3 py-1 rounded"
-                                        >
-                                            Delete
-                                        </button><br />
+                                        <td className="px-4 py-3 border-t">
 
-                                    </td>
+                                            <button
+                                                onClick={() =>
+                                                    handleDelete(product.id)
+                                                }
+                                                className="
+bg-red-500
+hover:bg-red-600
+text-white
+px-4
+py-2
+rounded-lg
+transition
+cursor-pointer
+"
+                                            >
+                                                Delete
+                                            </button>
 
-                                </tr>
+                                            <div className="flex flex-col gap-2">
 
-                            ))
-                        }
+                                                <button
+                                                    onClick={() => updateStock(product.id, true)}
+                                                    className="
+            bg-green-600
+            hover:bg-green-700
+            text-white
+            rounded-lg
+            px-3
+            py-2
+            cursor-pointer
+        "
+                                                >
+                                                    + Stock
+                                                </button>
 
-                    </tbody>
+                                                <button
+                                                    onClick={() => updateStock(product.id, false)}
+                                                    className="
+            bg-yellow-500
+            hover:bg-yellow-600
+            text-white
+            rounded-lg
+            px-3
+            py-2
+            cursor-pointer
+        "
+                                                >
+                                                    - Stock
+                                                </button>
 
-                </table>
+                                                <button
+                                                    onClick={() => handleDelete(product.id)}
+                                                    className="
+            bg-red-500
+            hover:bg-red-600
+            text-white
+            rounded-lg
+            px-3
+            py-2
+            cursor-pointer
+        "
+                                                >
+                                                    Delete
+                                                </button>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                ))
+                            }
+
+                        </tbody>
+
+                    </table>
+                </div>
                 {/* Added here pagination */}
 
-                <div>
+                <div className="flex justify-center items-center gap-5 mt-8">
 
                     <button
                         onClick={() => setPage(page - 1)}
                         disabled={page === 0}
+                        className="
+            bg-gray-700
+            hover:bg-gray-800
+            text-white
+            px-4
+            py-2
+            rounded-lg
+            disabled:bg-gray-400
+            cursor-pointer
+        "
                     >
                         Previous
                     </button>
 
-                    <span
-                        style={{
-                            margin: "0 15px"
-                        }}
-                    >
-                        Page {page + 1}
+                    <span className="font-semibold">
+                        Page {page + 1} of {totalPages}
                     </span>
 
                     <button
                         onClick={() => setPage(page + 1)}
                         disabled={page >= totalPages - 1}
+                        className="
+            bg-blue-600
+            hover:bg-blue-700
+            text-white
+            px-4
+            py-2
+            rounded-lg
+            disabled:bg-gray-400
+            cursor-pointer
+        "
                     >
                         Next
                     </button>

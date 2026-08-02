@@ -99,11 +99,19 @@ function Inventory() {
         <Layout>
             <div>
 
-                <h1 className="text-3xl font-bold mb-6">
-                    Inventory Management
-                </h1>
+                <div className="mb-8">
 
-                <div className="bg-white p-6 rounded-lg shadow">
+                    <h1 className="text-3xl font-bold text-gray-800">
+                        Inventory Management
+                    </h1>
+
+                    <p className="text-gray-500 mt-2">
+                        Manage stock transactions and inventory movement.
+                    </p>
+
+                </div>
+
+                <div className="bg-white rounded-xl shadow-md p-6">
 
                     <h2 className="text-2xl font-semibold mb-4">
                         Create Transaction
@@ -111,14 +119,23 @@ function Inventory() {
 
                     <form
                         onSubmit={handleSubmit}
-                        className="flex flex-col gap-4"
+                        className="grid grid-cols-1 md:grid-cols-2 gap-4"
                     >
 
                         <select
                             name="productId"
                             value={formData.productId}
                             onChange={handleChange}
-                            className="border p-3 rounded-lg"
+                            className="
+                            w-full
+border
+border-gray-300
+rounded-lg
+p-3
+focus:outline-none
+focus:ring-2
+focus:ring-blue-500
+                            "
                         >
 
                             <option value="">
@@ -148,7 +165,16 @@ function Inventory() {
                             placeholder="Quantity"
                             value={formData.quantity}
                             onChange={handleChange}
-                            className="border p-3 rounded-lg"   
+                            className="
+                            w-full
+border
+border-gray-300
+rounded-lg
+p-3
+focus:outline-none
+focus:ring-2
+focus:ring-blue-500
+                            "
                         />
 
                         <br /><br />
@@ -157,7 +183,16 @@ function Inventory() {
                             name="type"
                             value={formData.type}
                             onChange={handleChange}
-                            className="border p-3 rounded-lg"
+                            className="
+                            w-full
+border
+border-gray-300
+rounded-lg
+p-3
+focus:outline-none
+focus:ring-2
+focus:ring-blue-500
+                            "
                         >
 
                             <option value="">
@@ -183,12 +218,18 @@ function Inventory() {
                         <button
                             type="submit"
                             className="
-                            bg-blue-600
-                            text-white
-                            py-3
-                            rounded-lg
-                            hover:bg-blue-700
-                            transition
+                            md:col-span-2
+w-full
+sm:w-auto
+bg-blue-600
+hover:bg-blue-700
+text-white
+px-6
+py-3
+rounded-lg
+transition
+cursor-pointer
+
                             "
                         >
                             Create Transaction
@@ -199,84 +240,86 @@ function Inventory() {
 
                 <hr />
 
-                <div className="bg-white p-6 rounded-lg shadow mt-8">
+                <div className="bg-white rounded-xl shadow-md p-6 mt-8">
 
                     <h2 className="text-2xl font-bold mb-4">
                         Transaction History
                     </h2>
 
-                    <table className="w-full border">
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full border border-gray-300 rounded-lg">
 
-                        <thead>
+                            <thead>
 
-                            <tr className="bg-gray-200">
+                                <tr className="bg-gray-100 text-left">
 
-                                <th className="p-2">ID</th>
+                                    <th className="px-4 py-3">ID</th>
 
-                                <th className="p-2">Product</th>
+                                    <th className="px-4 py-3">Product</th>
 
-                                <th className="p-2">Quantity</th>
+                                    <th className="px-4 py-3">Quantity</th>
 
-                                <th className="p-2">Type</th>
+                                    <th className="px-4 py-3">Type</th>
 
-                                <th className="p-2">Time</th>
+                                    <th className="px-4 py-3">Time</th>
 
-                            </tr>
+                                </tr>
 
-                        </thead>
+                            </thead>
 
-                        <tbody>
+                            <tbody>
 
-                            {
-                                transactions.map(transaction => (
+                                {
+                                    transactions.map(transaction => (
 
-                                    <tr
-                                        key={transaction.id}
-                                        className="border-t"
-                                    >
+                                        <tr
+                                            key={transaction.id}
+                                            className="border-t"
+                                        >
 
-                                        <td className="p-2">
-                                            {transaction.id}
-                                        </td>
+                                            <td className="px-4 py-3 border-t">
+                                                {transaction.id}
+                                            </td>
 
-                                        <td className="p-2">
-                                            {transaction.productName}
-                                        </td>
+                                            <td className="px-4 py-3 border-t">
+                                                {transaction.productName}
+                                            </td>
 
-                                        <td className="p-2">
-                                            {transaction.quantity}
-                                        </td>
+                                            <td className="px-4 py-3 border-t">
+                                                {transaction.quantity}
+                                            </td>
 
-                                        <td className="p-2">
+                                            <td className="px-4 py-3 border-t whitespace-nowrap">
 
-                                            <span
-                                                className={`
-                                                        px-3 py-1 rounded text-white
+                                                <span
+                                                    className={`
+                                                        px-4 py-1 rounded-full text-sm font-semibold text-white rounded text-white
                                                         ${transaction.type === "STOCK_IN"
-                                                        ? "bg-green-500"
-                                                        : transaction.type === "STOCK_OUT"
-                                                            ? "bg-red-500"
-                                                            : "bg-yellow-500"
-                                                    }
+                                                            ? "bg-green-500"
+                                                            : transaction.type === "STOCK_OUT"
+                                                                ? "bg-red-500"
+                                                                : "bg-yellow-500"
+                                                        }
                                             `}
-                                            >
-                                                {transaction.type}
-                                            </span>
+                                                >
+                                                    {transaction.type}
+                                                </span>
 
-                                        </td>
+                                            </td>
 
-                                        <td className="p-2">
-                                            {transaction.time}
-                                        </td>
+                                            <td className="p-2">
+                                                {transaction.time}
+                                            </td>
 
-                                    </tr>
+                                        </tr>
 
-                                ))
-                            }
+                                    ))
+                                }
 
-                        </tbody>
+                            </tbody>
 
-                    </table>
+                        </table>
+                    </div>
 
                 </div>
 

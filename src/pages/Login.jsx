@@ -107,7 +107,7 @@ function Login() {
                 text-gray-500
                 mb-8
             ">
-                    Welcome Back 👋
+                    Welcome Back
                 </p>
 
                 <form onSubmit={handleLogin}>
@@ -179,6 +179,7 @@ function Login() {
                         transition
                         duration-200
                         disabled:bg-gray-400
+                        cursor-pointer
                     "
                     >
                         {
@@ -196,7 +197,7 @@ function Login() {
 
                     <Link
                         to="/register"
-                        className="text-blue-600 font-semibold ml-2"
+                        className="text-blue-600 font-semibold ml-2 cursor-pointer"
                     >
                         Register
                     </Link>

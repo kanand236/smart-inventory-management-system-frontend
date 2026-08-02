@@ -79,11 +79,30 @@ function Categories() {
 
     return (
         <Layout>
-            <div style={{ padding: "20px" }}>
+            <div className="max-w-7xl mx-auto">
 
-                <h2>Category Management</h2>
+                <div className="mb-8">
 
-                <div className="bg-white p-6 rounded-lg shadow mb-8">
+                    <h1 className="text-3xl font-bold text-gray-800">
+                        Category Management
+                    </h1>
+
+                    <p className="text-gray-500 mt-2">
+                        Manage all product categories here.
+                    </p>
+
+                </div>
+
+                <div className="
+                bg-white
+        rounded-xl
+        shadow-md
+        hover:shadow-lg
+        transition
+        duration-300
+        p-6
+        mb-8"
+                >
 
                     <h2 className="text-2xl font-bold mb-4">
                         Add Category
@@ -93,35 +112,65 @@ function Categories() {
 
                     <form onSubmit={handleAddCategory}>
 
-                        <input
-                            type="text"
-                            placeholder="Category Name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="border p-2 rounded w-full"
-                        />
+                        <div className="space-y-4">
 
-                        <br /><br />
+                            <input
+                                type="text"
+                                placeholder="Category Name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="
+            w-full
+            border
+            border-gray-300
+            rounded-lg
+            p-3
+            focus:outline-none
+            focus:ring-2
+            focus:ring-green-500
+        "
+                            />
 
-                        <textarea
-                            placeholder="Description"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            className="border p-2 rounded w-full"
-                        />
+                            <textarea
+                                placeholder="Description"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                rows="4"
+                                className="
+            w-full
+            border
+            border-gray-300
+            rounded-lg
+            p-3
+            focus:outline-none
+            focus:ring-2
+            focus:ring-green-500
+        "
+                            />
 
-                        <br /><br />
+                            <button
+                                type="submit"
+                                className="
+            w-full
+            sm:w-auto
+            bg-green-600
+            hover:bg-green-700
+            text-white
+            px-6
+            py-3
+            rounded-lg
+            transition
+            cursor-pointer
+        "
+                            >
+                                Add Category
+                            </button>
 
-                        <button
-                            type="submit"
-                            className="bg-green-600 text-white px-4 py-2 rounded mt-4"
-                        >
-                            Add Category
-                        </button>
+                        </div>
 
                     </form>
 
-                    <div className="bg-white p-6 rounded-lg shadow">
+                    <div className="bg-white rounded-xl shadow-md p-6 mt-8">
 
                         <h2 className="text-2xl font-bold mb-4">
                             Category List
@@ -129,55 +178,68 @@ function Categories() {
 
                     </div>
 
-                    <table className="w-full border">
+                    <div className="overflow-x-auto">
 
-                        <thead>
+                        <table className="min-w-full border border-gray-300 rounded-lg">
 
-                            <tr className="bg-gray-200">
+                            <thead>
 
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Action</th>
+                                <tr className="bg-gray-100 text-left">
 
-                            </tr>
+                                    <th className="px-4 py-3">ID</th>
+                                    <th className="px-4 py-3">Name</th>
+                                    <th className="px-4 py-3">Description</th>
+                                    <th className="px-4 py-3">Action</th>
 
-                        </thead>
+                                </tr>
 
-                        <tbody>
+                            </thead>
 
-                            {
-                                categories.map(category => (
+                            <tbody>
 
-                                    <tr key={category.id}>
+                                {
+                                    categories.map(category => (
 
-                                        <td>{category.id}</td>
+                                        <tr key={category.id}>
 
-                                        <td>{category.name}</td>
+                                            <td className="px-4 py-3 border-t">{category.id}</td>
 
-                                        <td>{category.description}</td>
+                                            <td className="px-4 py-3 border-t">{category.name}</td>
 
-                                        <td>
-                                            {
-                                                role === "ADMIN" && (
-                                                    <button
-                                                        onClick={() => handleDelete(category.id)}
-                                                        className="bg-red-500 text-white px-3 py-1 rounded "
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                )
-                                            }
-                                        </td>
+                                            <td className="px-4 py-3 border-t">{category.description}</td>
 
-                                    </tr>
+                                            <td>
+                                                {
+                                                    role === "ADMIN" && (
+                                                        <button
+                                                            onClick={() => handleDelete(category.id)}
+                                                            className="
+                                                            bg-red-500
+hover:bg-red-600
+text-white
+px-4
+py-2
+rounded-lg
+transition
+cursor-pointer
+ssss
+                                                            "
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    )
+                                                }
+                                            </td>
 
-                                ))
-                            }
+                                        </tr>
 
-                        </tbody>
+                                    ))
+                                }
 
-                    </table>
+                            </tbody>
+
+                        </table>
+                    </div>
 
                 </div>
 

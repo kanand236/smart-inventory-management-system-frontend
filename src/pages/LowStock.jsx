@@ -35,13 +35,21 @@ function LowStock() {
         <Layout>
             <div>
 
-                <h1 className="text-3xl font-bold mb-6">
-                    Low Stock Alert
-                </h1>
+                <div className="mb-8">
 
-                <div className="bg-red-100 border border-red-300 p-4 rounded-lg mb-6">
+                    <h1 className="text-3xl font-bold text-gray-800">
+                        Low Stock Alert
+                    </h1>
 
-                    <h2 className="text-xl font-semibold text-red-700">
+                    <p className="text-gray-500 mt-2">
+                        Monitor products that are below the minimum stock level.
+                    </p>
+
+                </div>
+
+                <div className="bg-red-50 border border-red-300 rounded-xl p-6 mb-8 shadow-sm">
+
+                    <h2 className="text-xl md:text-2xl font-bold text-red-600">
 
                         Total Low Stock Products:
                         {products.length}
@@ -50,7 +58,7 @@ function LowStock() {
 
                 </div>
 
-                <div className="bg-white p-6 rounded-lg shadow">
+                <div className="bg-white rounded-xl shadow-md p-6">
 
                     <h2 className="text-2xl font-bold mb-4">
 
@@ -58,76 +66,97 @@ function LowStock() {
 
                     </h2>
 
-                    <table className="w-full border">
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full border border-gray-300 rounded-lg">
 
-                        <thead>
+                            <thead>
 
-                            <tr className="bg-gray-200">
+                                <tr className="bg-gray-100 text-left">
 
-                                <th className="p-2">ID</th>
+                                    <th className="px-4 py-3">ID</th>
 
-                                <th className="p-2">Product</th>
+                                    <th className="px-4 py-3">Product</th>
 
-                                <th className="p-2">Current Stock</th>
+                                    <th className="px-4 py-3">Current Stock</th>
 
-                                <th className="p-2">Minimum Stock</th>
+                                    <th className="px-4 py-3">Minimum Stock</th>
 
-                                <th className="p-2">Status</th>
+                                    <th className="px-4 py-3">Status</th>
 
-                            </tr>
+                                </tr>
 
-                        </thead>
+                            </thead>
 
-                        <tbody>
+                            <tbody>
 
-                            {
-                                products.map(product => (
+                                {
+                                    products.length > 0 ? (
 
-                                    <tr
-                                        key={product.productId}
-                                        className="border-t"
-                                    >
+                                        products.map(product => (
 
-                                        <td className="p-2">
-                                            {product.productId}
-                                        </td>
-
-                                        <td className="p-2">
-                                            {product.productName}
-                                        </td>
-
-                                        <td className="p-2">
-                                            {product.quantity}
-                                        </td>
-
-                                        <td className="p-2">
-                                            {product.minimumStock}
-                                        </td>
-
-                                        <td className="p-2">
-
-                                            <span
-                                                className="
-                                bg-red-500
-                                text-white
-                                px-3
-                                py-1
-                                rounded
-                            "
+                                            <tr
+                                                key={product.productId}
+                                                className="border-t"
                                             >
-                                                LOW STOCK
-                                            </span>
 
-                                        </td>
+                                                <td className="px-4 py-3">
+                                                    {product.productId}
+                                                </td>
 
-                                    </tr>
+                                                <td className="px-4 py-3">
+                                                    {product.productName}
+                                                </td>
 
-                                ))
-                            }
+                                                <td className="px-4 py-3">
+                                                    {product.quantity}
+                                                </td>
 
-                        </tbody>
+                                                <td className="px-4 py-3">
+                                                    {product.minimumStock}
+                                                </td>
 
-                    </table>
+                                                <td className="px-4 py-3">
+
+                                                    <span
+                                                        className="
+                        bg-red-500
+                        text-white
+                        px-4
+                        py-1
+                        rounded-full
+                        text-sm
+                        font-semibold
+                        "
+                                                    >
+                                                        LOW STOCK
+                                                    </span>
+
+                                                </td>
+
+                                            </tr>
+
+                                        ))
+
+                                    ) : (
+
+                                        <tr>
+
+                                            <td
+                                                colSpan="5"
+                                                className="text-center py-6 text-gray-500"
+                                            >
+                                                No Low Stock Products Found
+                                            </td>
+
+                                        </tr>
+
+                                    )
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
                 </div>
             </div>
 
